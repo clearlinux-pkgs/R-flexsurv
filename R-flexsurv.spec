@@ -4,30 +4,28 @@
 #
 Name     : R-flexsurv
 Version  : 1.1
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/flexsurv_1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_1.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
 Group    : Development/Tools
 License  : GPL-2.0+
-Requires: R-flexsurv-lib
-Requires: R-Rcpp
+Requires: R-flexsurv-lib = %{version}-%{release}
 Requires: R-deSolve
 Requires: R-eha
+Requires: R-highr
 Requires: R-mstate
 Requires: R-muhaz
 Requires: R-mvtnorm
 Requires: R-quadprog
-Requires: R-stringi
-BuildRequires : R-Rcpp
 BuildRequires : R-deSolve
 BuildRequires : R-eha
+BuildRequires : R-highr
 BuildRequires : R-mstate
 BuildRequires : R-muhaz
 BuildRequires : R-mvtnorm
 BuildRequires : R-quadprog
-BuildRequires : R-stringi
-BuildRequires : clr-R-helpers
+BuildRequires : buildreq-R
 BuildRequires : texlive
 
 %description
@@ -53,11 +51,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530424710
+export SOURCE_DATE_EPOCH=1552808105
 
 %install
+export SOURCE_DATE_EPOCH=1552808105
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1530424710
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -75,9 +73,9 @@ echo "FFLAGS = $FFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library flexsurv
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx2 ; mv $i.avx2 ~/.stash/; done
-echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize -mprefer-vector-width=512 " > ~/.R/Makevars
-echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize -mprefer-vector-width=512 " >> ~/.R/Makevars
-echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize -mprefer-vector-width=512  " >> ~/.R/Makevars
+echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize " > ~/.R/Makevars
+echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
+echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --preclean --install-tests --no-test-load --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library flexsurv
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx512 ; mv $i.avx512 ~/.stash/; done
 echo "CFLAGS = $CFLAGS -ftree-vectorize " > ~/.R/Makevars
@@ -92,8 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library flexsurv|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  flexsurv || :
 
 
 %files
@@ -129,7 +126,21 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/flexsurv/help/paths.rds
 /usr/lib64/R/library/flexsurv/html/00Index.html
 /usr/lib64/R/library/flexsurv/html/R.css
-/usr/lib64/R/library/flexsurv/libs/symbols.rds
+/usr/lib64/R/library/flexsurv/tests/test_base.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_custom.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_deriv.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_flexsurvreg.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_genf.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_genf_orig.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_gengamma.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_gengamma_orig.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_gompertz.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_llogis.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_mstate.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_outputs.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_spline.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_splinedist.R
+/usr/lib64/R/library/flexsurv/tests/testthat/test_utils.R
 
 %files lib
 %defattr(-,root,root,-)
