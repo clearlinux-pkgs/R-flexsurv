@@ -4,14 +4,13 @@
 #
 Name     : R-flexsurv
 Version  : 1.1.1
-Release  : 13
+Release  : 14
 URL      : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-flexsurv-lib = %{version}-%{release}
-Requires: R-TH.data
 BuildRequires : R-RColorBrewer
 BuildRequires : R-Rcpp
 BuildRequires : R-TH.data
@@ -54,10 +53,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556466521
+export SOURCE_DATE_EPOCH=1556473784
 
 %install
-export SOURCE_DATE_EPOCH=1556466521
+export SOURCE_DATE_EPOCH=1556473784
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
