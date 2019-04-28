@@ -4,32 +4,21 @@
 #
 Name     : R-flexsurv
 Version  : 1.1.1
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-flexsurv-lib = %{version}-%{release}
-Requires: R-RColorBrewer
-Requires: R-Rcpp
-Requires: R-deSolve
-Requires: R-eha
-Requires: R-glue
-Requires: R-mstate
-Requires: R-muhaz
-Requires: R-mvtnorm
-Requires: R-pillar
-Requires: R-pkgconfig
-Requires: R-quadprog
-Requires: R-rlang
-Requires: R-tibble
-Requires: R-tidyr
+Requires: R-TH.data
 BuildRequires : R-RColorBrewer
 BuildRequires : R-Rcpp
+BuildRequires : R-TH.data
 BuildRequires : R-deSolve
 BuildRequires : R-eha
 BuildRequires : R-glue
+BuildRequires : R-highr
 BuildRequires : R-mstate
 BuildRequires : R-muhaz
 BuildRequires : R-mvtnorm
@@ -40,6 +29,7 @@ BuildRequires : R-rlang
 BuildRequires : R-tibble
 BuildRequires : R-tidyr
 BuildRequires : buildreq-R
+BuildRequires : texlive
 
 %description
 including the Royston-Parmar spline model, generalized gamma and
@@ -64,10 +54,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552950715
+export SOURCE_DATE_EPOCH=1556466521
 
 %install
-export SOURCE_DATE_EPOCH=1552950715
+export SOURCE_DATE_EPOCH=1556466521
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -103,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  flexsurv || :
+R CMD check --no-manual --no-examples --no-codoc flexsurv || :
 
 
 %files
@@ -159,4 +149,3 @@ R CMD check --no-manual --no-examples --no-codoc  flexsurv || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/flexsurv/libs/flexsurv.so
 /usr/lib64/R/library/flexsurv/libs/flexsurv.so.avx2
-/usr/lib64/R/library/flexsurv/libs/flexsurv.so.avx512

@@ -1,6 +1,7 @@
 1.1.1
 R-RColorBrewer
 R-Rcpp
+R-TH.data
 R-deSolve
 R-eha
 R-glue
