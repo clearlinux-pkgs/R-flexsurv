@@ -4,27 +4,31 @@
 #
 Name     : R-flexsurv
 Version  : 1.1.1
-Release  : 17
+Release  : 18
 URL      : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-flexsurv-lib = %{version}-%{release}
-BuildRequires : R-RColorBrewer
+Requires: R-Rcpp
+Requires: R-TH.data
+Requires: R-deSolve
+Requires: R-eha
+Requires: R-mstate
+Requires: R-muhaz
+Requires: R-mvtnorm
+Requires: R-quadprog
+Requires: R-tibble
+Requires: R-tidyr
 BuildRequires : R-Rcpp
 BuildRequires : R-TH.data
 BuildRequires : R-deSolve
 BuildRequires : R-eha
-BuildRequires : R-glue
-BuildRequires : R-highr
 BuildRequires : R-mstate
 BuildRequires : R-muhaz
 BuildRequires : R-mvtnorm
-BuildRequires : R-pillar
-BuildRequires : R-pkgconfig
 BuildRequires : R-quadprog
-BuildRequires : R-rlang
 BuildRequires : R-tibble
 BuildRequires : R-tidyr
 BuildRequires : buildreq-R
@@ -52,13 +56,13 @@ lib components for the R-flexsurv package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556473784
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569383242
 
 %install
-export SOURCE_DATE_EPOCH=1556473784
+export SOURCE_DATE_EPOCH=1569383242
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -87,7 +91,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
