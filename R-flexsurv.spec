@@ -4,7 +4,7 @@
 #
 Name     : R-flexsurv
 Version  : 1.1.1
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
@@ -14,7 +14,6 @@ Requires: R-flexsurv-lib = %{version}-%{release}
 Requires: R-Rcpp
 Requires: R-TH.data
 Requires: R-deSolve
-Requires: R-eha
 Requires: R-mstate
 Requires: R-muhaz
 Requires: R-mvtnorm
@@ -24,7 +23,6 @@ Requires: R-tidyr
 BuildRequires : R-Rcpp
 BuildRequires : R-TH.data
 BuildRequires : R-deSolve
-BuildRequires : R-eha
 BuildRequires : R-mstate
 BuildRequires : R-muhaz
 BuildRequires : R-mvtnorm
@@ -51,21 +49,22 @@ lib components for the R-flexsurv package.
 
 %prep
 %setup -q -c -n flexsurv
+cd %{_builddir}/flexsurv
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569383242
+export SOURCE_DATE_EPOCH=1589777800
 
 %install
-export SOURCE_DATE_EPOCH=1569383242
+export SOURCE_DATE_EPOCH=1589777800
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
