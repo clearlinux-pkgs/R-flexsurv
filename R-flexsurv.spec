@@ -4,7 +4,7 @@
 #
 Name     : R-flexsurv
 Version  : 1.1.1
-Release  : 22
+Release  : 23
 URL      : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_1.1.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
@@ -12,7 +12,6 @@ Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-flexsurv-lib = %{version}-%{release}
 Requires: R-Rcpp
-Requires: R-TH.data
 Requires: R-deSolve
 Requires: R-mstate
 Requires: R-muhaz
@@ -21,7 +20,6 @@ Requires: R-quadprog
 Requires: R-tibble
 Requires: R-tidyr
 BuildRequires : R-Rcpp
-BuildRequires : R-TH.data
 BuildRequires : R-deSolve
 BuildRequires : R-mstate
 BuildRequires : R-muhaz
@@ -30,7 +28,6 @@ BuildRequires : R-quadprog
 BuildRequires : R-tibble
 BuildRequires : R-tidyr
 BuildRequires : buildreq-R
-BuildRequires : texlive
 
 %description
 including the Royston-Parmar spline model, generalized gamma and
@@ -56,10 +53,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589777800
+export SOURCE_DATE_EPOCH=1601678727
 
 %install
-export SOURCE_DATE_EPOCH=1589777800
+export SOURCE_DATE_EPOCH=1601678727
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -151,3 +148,4 @@ R CMD check --no-manual --no-examples --no-codoc flexsurv || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/flexsurv/libs/flexsurv.so
 /usr/lib64/R/library/flexsurv/libs/flexsurv.so.avx2
+/usr/lib64/R/library/flexsurv/libs/flexsurv.so.avx512
