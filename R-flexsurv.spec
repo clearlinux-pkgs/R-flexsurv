@@ -4,7 +4,7 @@
 #
 Name     : R-flexsurv
 Version  : 2.0
-Release  : 25
+Release  : 26
 URL      : https://cran.r-project.org/src/contrib/flexsurv_2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_2.0.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
@@ -24,6 +24,7 @@ Requires: R-numDeriv
 Requires: R-purrr
 Requires: R-quadprog
 Requires: R-rlang
+Requires: R-rstpm2
 Requires: R-tibble
 Requires: R-tidyr
 Requires: R-tidyselect
@@ -71,10 +72,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1614269419
+export SOURCE_DATE_EPOCH=1614273917
 
 %install
-export SOURCE_DATE_EPOCH=1614269419
+export SOURCE_DATE_EPOCH=1614273917
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
