@@ -4,7 +4,7 @@
 #
 Name     : R-flexsurv
 Version  : 2.1
-Release  : 38
+Release  : 39
 URL      : https://cran.r-project.org/src/contrib/flexsurv_2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_2.1.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
