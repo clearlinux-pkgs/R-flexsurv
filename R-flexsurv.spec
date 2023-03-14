@@ -4,7 +4,7 @@
 #
 Name     : R-flexsurv
 Version  : 2.2.2
-Release  : 46
+Release  : 47
 URL      : https://cran.r-project.org/src/contrib/flexsurv_2.2.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/flexsurv_2.2.2.tar.gz
 Summary  : Flexible Parametric Survival and Multi-State Models
@@ -50,9 +50,6 @@ BuildRequires : R-tibble
 BuildRequires : R-tidyr
 BuildRequires : R-tidyselect
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 including the Royston-Parmar spline model, generalized gamma and
@@ -79,10 +76,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1675270044
+export SOURCE_DATE_EPOCH=1678819465
 
 %install
-export SOURCE_DATE_EPOCH=1675270044
+export SOURCE_DATE_EPOCH=1678819465
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
